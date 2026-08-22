@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Context Carry</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="header">
+      <div class="brand">
+        <img src="../../icons/icon48.png" alt="" />
+        <div>
+          <h1>Context Carry</h1>
+          <div class="sub">Handoff a chat without starting over</div>
+        </div>
+      </div>
+    </header>
+
+    <div id="keysBanner" class="banner warn" hidden>
+      No API key yet. Summaries need a free Groq key.
+      <a href="onboarding.html" target="_blank" rel="noreferrer">Open setup guide</a>
+      or continue and save a raw transcript.
+    </div>
+
+    <section class="card">
+      <h2>This page</h2>
+      <div class="row">
+        <span class="page-chip">
+          <span id="pageDot" class="dot"></span>
+          <span id="pageLabel">Checking…</span>
+        </span>
+      </div>
+      <p class="muted" id="pageHint" style="margin: 8px 0 0;"></p>
+    </section>
+
+    <section class="card">
+      <h2>Capture</h2>
+      <div class="grid-2">
+        <button class="btn btn-primary" id="btnFull">Summarize full chat</button>
+        <button class="btn" id="btnLast">Last exchange</button>
+      </div>
+      <p class="muted" style="margin: 8px 0 10px;">
+        Full chat scrolls to load older messages and can take several seconds on long threads.
+      </p>
+      <button class="btn btn-ghost btn-wide" id="btnManual">Use selected text</button>
+      <p class="status" id="status"></p>
+    </section>
+
+    <section class="card" id="resultCard" hidden>
+      <h2 id="resultHeading">Handoff</h2>
+      <label class="field">
+        <span>Title</span>
+        <input type="text" id="resultTitle" />
+      </label>
+      <textarea id="resultBody" spellcheck="false"></textarea>
+      <div class="row" style="margin-top: 10px;">
+        <button class="btn btn-primary" id="btnCopy">Copy</button>
+        <button class="btn" id="btnDownload">Download .md</button>
+        <button class="btn" id="btnSave">Save</button>
+      </div>
+      <p class="muted" id="resultMeta"></p>
+    </section>
+
+    <section class="card">
+      <h2>Saved contexts</h2>
+      <div class="row" style="margin-bottom: 10px;">
+        <button class="btn" id="btnExport">Export JSON</button>
+        <button class="btn" id="btnImport">Import JSON</button>
+        <input type="file" id="importFile" accept="application/json" hidden />
+      </div>
+      <div class="list" id="library"></div>
+      <p class="muted" id="libraryEmpty">Nothing saved yet.</p>
+    </section>
+
+    <section class="card" id="editCard" hidden>
+      <h2>Edit saved context</h2>
+      <label class="field">
+        <span>Title</span>
+        <input type="text" id="editTitle" />
+      </label>
+      <textarea id="editBody" spellcheck="false"></textarea>
+      <div class="row" style="margin-top: 10px;">
+        <button class="btn btn-primary" id="btnUpdate">Update</button>
+        <button class="btn" id="btnEditCopy">Copy</button>
+        <button class="btn" id="btnEditDownload">Download .md</button>
+        <button class="btn btn-danger" id="btnDelete">Delete</button>
+      </div>
+    </section>
+
+    <div class="footer-links">
+      <button id="btnSettings">Settings</button>
+      <button id="btnOnboarding">Show setup guide</button>
+      <button id="btnDump">Copy page structure</button>
+    </div>
+  </div>
+  <script src="sidepanel.js"></script>
+</body>
+</html>

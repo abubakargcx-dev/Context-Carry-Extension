@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Context Carry — Settings</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <div class="wide-page">
+    <p class="kicker">Context Carry</p>
+    <h1 style="margin-top: 4px;">Settings</h1>
+    <p class="muted">Keys stay on this device. They are sent only to the provider you configured, when you capture a chat.</p>
+
+    <section class="card" style="margin-top: 18px;">
+      <h2>Groq (primary)</h2>
+      <label class="field">
+        <span>API key</span>
+        <input type="password" id="groqKey" autocomplete="off" />
+      </label>
+      <label class="field">
+        <span>Model</span>
+        <input type="text" id="groqModel" />
+      </label>
+      <p class="muted">Free-tier models change. See <a href="https://console.groq.com/docs/models" target="_blank" rel="noreferrer">Groq’s live model list</a>.</p>
+      <div class="row">
+        <button class="btn btn-primary" id="saveGroq">Save</button>
+        <button class="btn" id="testGroq">Test key</button>
+        <span id="groqStatus" class="muted"></span>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top: 14px;">
+      <h2>OpenRouter (fallback)</h2>
+      <label class="field">
+        <span>API key</span>
+        <input type="password" id="openrouterKey" autocomplete="off" />
+      </label>
+      <label class="field">
+        <span>Model</span>
+        <input type="text" id="openrouterModel" />
+      </label>
+      <p class="muted">Default <code>openrouter/free</code> routes to a live free model. See <a href="https://openrouter.ai/models" target="_blank" rel="noreferrer">OpenRouter models</a>.</p>
+      <div class="row">
+        <button class="btn btn-primary" id="saveOpenrouter">Save</button>
+        <button class="btn" id="testOpenrouter">Test key</button>
+        <span id="orStatus" class="muted"></span>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top: 14px;">
+      <h2>Custom providers</h2>
+      <p class="muted">Tried after Groq and OpenRouter, in the order shown. OpenAI-compatible or Anthropic.</p>
+      <div id="customList" class="list" style="margin: 12px 0;"></div>
+      <button class="btn" id="addCustom">Add provider</button>
+    </section>
+
+    <p class="footer-links" style="margin-top: 18px;">
+      <a href="onboarding.html">Show setup guide</a>
+    </p>
+  </div>
+  <script src="settings.js"></script>
+</body>
+</html>

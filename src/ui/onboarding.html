@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Context Carry — Setup</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <div class="wide-page">
+    <p class="kicker">First-run setup</p>
+    <h1 style="margin-top: 4px;">Get a free key, then carry chats between models</h1>
+    <p class="muted">Keys are stored only on this computer. Skip any step; you can finish later from Settings.</p>
+
+    <section class="card" id="stepGroq" style="margin-top: 18px;">
+      <h2>1. Groq API key (recommended)</h2>
+      <ol class="steps">
+        <li>Open <a href="https://console.groq.com/keys" target="_blank" rel="noreferrer">console.groq.com/keys</a> and sign in.</li>
+        <li>Create an API key and copy it.</li>
+        <li>Paste it below and save. This is the primary summarizer — fast and free-tier.</li>
+      </ol>
+      <label class="field">
+        <span>Groq API key</span>
+        <input type="password" id="groqKey" autocomplete="off" />
+      </label>
+      <div class="row">
+        <button class="btn btn-primary" id="saveGroq">Save Groq key</button>
+        <span id="groqMsg" class="muted"></span>
+      </div>
+    </section>
+
+    <section class="card" id="stepOr" style="margin-top: 14px;">
+      <h2>2. OpenRouter key (optional fallback)</h2>
+      <ol class="steps">
+        <li>Open <a href="https://openrouter.ai/keys" target="_blank" rel="noreferrer">openrouter.ai/keys</a>.</li>
+        <li>Create a key. Free models are used by default (<code>openrouter/free</code>).</li>
+        <li>Paste it below. Context Carry uses this if Groq fails.</li>
+      </ol>
+      <label class="field">
+        <span>OpenRouter API key</span>
+        <input type="password" id="openrouterKey" autocomplete="off" />
+      </label>
+      <div class="row">
+        <button class="btn btn-primary" id="saveOr">Save OpenRouter key</button>
+        <span id="orMsg" class="muted"></span>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top: 14px;">
+      <h2>3. How you use it</h2>
+      <ol class="steps">
+        <li>Open a ChatGPT, Claude, or Gemini conversation (or any page, then highlight the chat).</li>
+        <li>Click the Context Carry icon to open the side panel.</li>
+        <li>Choose <strong>Last exchange</strong> for a quick handoff, or <strong>Summarize full chat</strong> for the whole thread.</li>
+        <li>Copy the handoff and paste it into a new chat — same product or a different one.</li>
+      </ol>
+    </section>
+
+    <section class="card" style="margin-top: 14px;">
+      <h2>4. Done</h2>
+      <p>You can reopen this guide from Settings anytime. Saved contexts never leave this browser unless you export them.</p>
+      <div class="row">
+        <button class="btn btn-primary" id="finish">Finish setup</button>
+        <button class="btn btn-ghost" id="skip">Skip for now</button>
+      </div>
+      <p id="doneMsg" class="ok" hidden>Setup marked complete. You can close this tab.</p>
+    </section>
+  </div>
+  <script src="onboarding.js"></script>
+</body>
+</html>
