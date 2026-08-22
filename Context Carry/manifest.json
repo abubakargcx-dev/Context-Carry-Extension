@@ -1,0 +1,80 @@
+{
+  "manifest_version": 3,
+  "name": "Context Carry",
+  "version": "0.1.0",
+  "description": "Capture an in-progress LLM chat and carry a structured handoff into any new conversation.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Context Carry",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "side_panel": {
+    "default_path": "src/ui/sidepanel.html"
+  },
+  "options_ui": {
+    "page": "src/ui/settings.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "permissions": [
+    "storage",
+    "sidePanel",
+    "activeTab",
+    "scripting",
+    "clipboardWrite",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://chatgpt.com/*",
+    "https://chat.openai.com/*",
+    "https://claude.ai/*",
+    "https://gemini.google.com/*",
+    "https://api.groq.com/*",
+    "https://openrouter.ai/*",
+    "https://api.openai.com/*",
+    "https://api.anthropic.com/*"
+  ],
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://chatgpt.com/*", "https://chat.openai.com/*"],
+      "js": [
+        "src/adapters/_contract.js",
+        "src/adapters/chatgpt.js",
+        "src/content-bridge.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://claude.ai/*"],
+      "js": [
+        "src/adapters/_contract.js",
+        "src/adapters/claude.js",
+        "src/content-bridge.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://gemini.google.com/*"],
+      "js": [
+        "src/adapters/_contract.js",
+        "src/adapters/gemini.js",
+        "src/content-bridge.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
